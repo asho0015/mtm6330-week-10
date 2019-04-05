@@ -51,21 +51,36 @@ $(document).ready(function ($) {
       $(this).load(page)
     }).fadeIn(500)
   }) // closing click event on the contentNav nav-link
+
+  // $.ajax({
+  //   url: './data/posts.json',
+  //   type: 'GET',
+  //   dataType: 'json'
+  // }).done(function (data) {
+  //   var numPosts = data.posts.length
+  //   for (var i = 0; i < numPosts; i++) {
+  //     var post = '<div class="col-sm-6 p-5"><h3>'
+  //     post += (i+1) + '. ' + data.posts[i].title
+  //     post += '</h3><p>'
+  //     post += data.posts[i].body
+  //     post += '</p></div>'
+  //     $('#posts').append(post)
+  //   }
+
   $.ajax({
-    url: './data/posts.json',
+    url: 'http://jsonplaceholder.typicode.com/posts',
     type: 'GET',
     dataType: 'json'
   }).done(function (data) {
-    var numPosts = data.posts.length
+    var numPosts = data.length
     for (var i = 0; i < numPosts; i++) {
       var post = '<div class="col-sm-6 p-5"><h3>'
-      post += (i+1) + '. ' + data.posts[i].title
+      post += (i+1) + '. ' + data[i].title
       post += '</h3><p>'
-      post += data.posts[i].body
+      post += data[i].body
       post += '</p></div>'
       $('#posts').append(post)
     }
-
-
-  })
+  }) // Closing the Ajax call for the remote server
+  AOS.init();
 }) // Closing the document.ready method and the function
