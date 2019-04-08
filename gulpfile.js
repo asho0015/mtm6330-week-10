@@ -17,6 +17,13 @@ gulp.task('sass', function () {
   return gulp
     .src('scss/**/*.scss') // source of any sass files
     .pipe(sass()) // run the sass compiler on the source file
+    .src([
+      'node_modules/jquery/dist/jquery.js',
+
+    'node_modules/bootstrap/dist/js/bootstrap.js',
+
+    'js/*.js'
+  ])
     .pipe(gulp.dest('css')) // destination for the compiled css files
     .pipe(postcss(plugins)) // apply the PostCSS plugins
     .pipe(gulp.dest('css/min')) // path to output the minified css file
