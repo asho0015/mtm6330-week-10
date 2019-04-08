@@ -75,7 +75,7 @@ $(document).ready(function ($) {
       $('#posts').append(post)
     }
   })
-  // Initializing AOS plugin
+  // Initializing AOS 
   AOS.init()
 
 })
